@@ -11,12 +11,14 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "clsx": "^2.1.1",
     "init": "^0.1.2",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^8.5.0",
+    "swiper": "^11.2.1",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
@@ -29,6 +31,7 @@
     "@storybook/nextjs": "8.6.0-alpha.0",
     "@storybook/react": "8.6.0-alpha.0",
     "@storybook/test": "8.6.0-alpha.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
