@@ -13,6 +13,9 @@ export default {
         foreground: "var(--foreground)",
         clevergreen: '[#668784]'
       },
+      fontWeight: {
+        '350': '350',
+      },
     },
   },
   plugins: [],

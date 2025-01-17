@@ -6,4 +6,5 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   children?: React.ReactNode;
   type?: string;
   value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
