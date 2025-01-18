@@ -42,15 +42,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps> (
       >
         {iconLeading &&
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M21 12H3.3"  stroke={iconColer} stroke-miterlimit="10"/>
-            <path d="M10.5 19.2L3.3 12L10.5 4.79999" stroke={iconColer} stroke-miterlimit="10"/>
+            <path d="M21 12H3.3"  stroke={iconColer} strokeMiterlimit="10"/>
+            <path d="M10.5 19.2L3.3 12L10.5 4.79999" stroke={iconColer} strokeMiterlimit="10"/>
           </svg>
         }
           {children}
         {iconTrailing &&
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M3.3 12H21" stroke={iconColer} stroke-miterlimit="10"/>
-            <path d="M13.5 4.79999L20.7 12L13.5 19.2" stroke={iconColer} stroke-miterlimit="10" />
+            <path d="M3.3 12H21" stroke={iconColer} strokeMiterlimit="10"/>
+            <path d="M13.5 4.79999L20.7 12L13.5 19.2" stroke={iconColer} strokeMiterlimit="10" />
           </svg>
         }
       </button>

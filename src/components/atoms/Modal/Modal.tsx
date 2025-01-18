@@ -24,7 +24,7 @@ export const Modal: React.FC<ModalProps> = ({
     <dialog
       ref={dialogRef}
       className={cn(
-        'shadow-xl rounded-3 p-0 backdrop:bg-[#00000080] backdrop:backdrop-blur-[1.5px]',
+        'shadow-xl rounded-3 p-0 backdrop:bg-[#00000080] backdrop:backdrop-blur-[1.5px] w-full h-auto',
         className,
       )}
     >
