@@ -1,4 +1,4 @@
-/* import { Button } from '@/components/molecules/Button/Button'; */
+import { Button } from '@/components/atoms/Button/Button';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -17,16 +17,16 @@ export const Default: Story = {
 
     return (
       <div>
-        <Modal open={true} onClose={() => setShowModal(false)}>
+        <Modal open={showModal}>
           <div>Modal</div>
+          <button onClick={() => setShowModal(false)}>Close</button>
         </Modal>
-{/*         <Button
+        <Button
           className="z-10"
-          variant="secondary"
           onClick={() => setShowModal(true)}
         >
           Show Modal
-        </Button> */}
+        </Button>
       </div>
     );
   },

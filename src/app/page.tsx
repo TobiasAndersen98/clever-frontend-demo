@@ -36,12 +36,12 @@ export default function Home() {
             <h1 className='text-4xl font-350'>Velkommen til <br/> Selvbetjening Erhverv</h1>
             <p className='mt-10 text-base font-normal leading-[140%]'>Log ind med din brugerkonto</p>
               <div className='mt-6'>
-                <Input label="Email *" type='email' floating={true} 
+                <Input label="Email *" type='email'
                   value={email}
                   onChange={(e) => setEmail((e.target as HTMLInputElement).value)} />
               </div>
               <div className='mt-6'>
-                <Input label="Adgangskode *" type='password' error={error} floating={true} 
+                <Input label="Adgangskode *" type='password' error={error}
                 value={password}
                 onChange={(e) => setPassword((e.target as HTMLInputElement).value)} />
             </div>
@@ -53,7 +53,7 @@ export default function Home() {
               </Button>
             </div>
             <div className='mt-4'>
-              <a className='underline text-[#003732] text-sm leading-[140%] tracking-[0.056px] hover:cursor-pointer hover:bg-[#003732] hover:text-white'> Glemt Adgangskode?</a>
+              <Button variant='link'>Glemt Adgangskode?</Button>
             </div>
           </div>
         </div>
