@@ -17,6 +17,7 @@ import {CarouselProps} from './Carousel.types';
   nextButtonLabel,
   finalButtonLabel,
   closebutton,
+  closeModal
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<any>(null);
@@ -32,49 +33,20 @@ import {CarouselProps} from './Carousel.types';
       swiperRef.current.slidePrev(); // Moves to the previous slide programmatically
     }
   };
-    const closeModel = () => {
-      false;
-    }
-    
-    const slides = [
-    {
-      content: (
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-2xl font-bold">Slide 1</h2>
-          <p className="text-gray-600">This is the first slide</p>
-        </div>
-      ),
-    },
-    {
-      content: (
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-2xl font-bold">Slide 2</h2>
-          <p className="text-gray-600">This is the second slide</p>
-        </div>
-      ),
-    },
-    {
-      content: (
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-2xl font-bold">Slide 3</h2>
-          <p className="text-gray-600">This is the third slide</p>
-        </div>
-      ),
-      },
-    ];
+   const closeModel = () => {
+    if (closeModal) closeModal(); // Ensure closeModal is called if provided
+    };
 
     const totalSlides = React.Children.count(children);
-    console.log(totalSlides);
   return (
-   <div className={cn('w-full', className)}>
-      {/* Swiper Container */}
+   <div className={cn('w-full h-full', className)}>
       <div>
       <Swiper
         slidesPerView={1}
         allowTouchMove={false}
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.activeIndex);
-          onSlideChange?.(swiper.activeIndex); // Trigger optional callback
+          onSlideChange?.(swiper.activeIndex);
         }}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
@@ -110,11 +82,10 @@ import {CarouselProps} from './Carousel.types';
         )}
         <Button
           variant="primary"
-          iconTrailing={activeIndex === slides.length - 1 ? false : true}
-          onClick={goToNextSlide}
-          disabled={activeIndex === slides.length - 1}
+          iconTrailing={activeIndex !== totalSlides - 1}
+          onClick={activeIndex !== totalSlides - 1 ? goToNextSlide : closeModel}
         >
-          {activeIndex === slides.length - 1 ? finalButtonLabel : nextButtonLabel}
+          {activeIndex === totalSlides - 1 ? finalButtonLabel : nextButtonLabel}
           </Button>
         </div>
       </div>

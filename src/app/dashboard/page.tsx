@@ -6,17 +6,17 @@ import 'swiper/css';
 import { Modal } from '@/components/atoms/Modal/Modal';
 import { Carousel } from '@/components/molecules/Carousel/Carousel';
 import Image from 'next/image';
+import { Button } from '@/components/atoms/Button/Button';
 
 export default function Page() {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(true);
 
   return (
-     <div className='relative w-full h-screen bg-cover' style={{ backgroundImage: 'url(/img/Forside_til_export.png)' }}>
-    
-
-        <Modal open={showModal} className='p-12 flex flex-col max-w-[800px] text-[#003732]'>
+    <div>
+      <Button onClick={()=>setShowModal(true)}>open</Button>
+        <Modal open={showModal} className='p-12 flex flex-col max-w-[800px] h-[673px] overflow-hidden text-[#003732] '>
           <div>
-            <p className='text-2xl font-light text-'>Ny og forbedret selvbetjening</p>
+            <p className='text-2xl font-light'>Ny og forbedret selvbetjening</p>
             <p className='mt-4'>Vi har udviklet og opdateret din selvbetjening. Vi arbejder fortsat på de små detaljer, men det vigtigste er på plads.</p>
           </div>
           <hr className='mt-10' />
@@ -24,7 +24,8 @@ export default function Page() {
           closebutton="spring over"
           prevButtonLabel="Forrige"
           nextButtonLabel="Næste"
-          finalButtonLabel="Kom i gang">
+          finalButtonLabel="Kom i gang"
+          closeModal={()=>setShowModal(false)}>
             <SwiperSlide>
               <div className='flex px-12 py-10 gap-4'>
                 <Image src='/slide1.svg' alt='slide1' width={309} height={180} />
@@ -62,10 +63,9 @@ export default function Page() {
                     <li className='text-sm'>Modtag en kvitteringsmail i indbakken</li>
                   </ul>
                 </div>
-              </div></SwiperSlide>
+          </div></SwiperSlide>
           </Carousel>
       </Modal>
-
     </div>
   );
 }

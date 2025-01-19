@@ -3,6 +3,7 @@ import { Input } from '@/components/atoms/Input/Input';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/atoms/Button/Button';
+import { Modal } from '@/components/atoms/Modal/Modal';
 
 export default function Home() {
   const storedEmail = process.env.NEXT_PUBLIC_USER_EMAIL;
@@ -25,10 +26,18 @@ export default function Home() {
       console.log('User is invalid');
       setError('Den e-mail eller adgangskode du har indtastet, er ugyldig. Prøv igen.')
     }
-  }
+    }
+  const [showModal, setShowModel] = useState(false);
 
   return (
     <div className=" mx-auto">
+      <Button onClick={() => setShowModel(true)}>open</Button>
+      <Modal open={showModal} className='p-12 flex flex-col overflow-hidden text-[#003732] '>
+        <div>
+          <p className='text-2xl font-light'>Ny og forbedret selvbetjening</p>
+          <p className='mt-4'>Vi har udviklet og opdateret din selvbetjening. Vi arbejder fortsat på de små detaljer</p>
+        </div>
+        </Modal>
       <Image src={'/logo.svg'} alt="Clever" width={120} height={22} className=' relative top-[113px] left-20 ' />
       <div className='flex w-full -mt-[22px]'>
         <div className=" w-1/2 m-auto">

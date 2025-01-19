@@ -7,28 +7,40 @@ import { ModalProps } from './Modal.types';
 export const Modal: React.FC<ModalProps> = ({ 
   className = '',
   open,
+  onClose,
   children,
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
+    useEffect(() => {
     const dialog = dialogRef.current;
+
     if (open) {
-      dialog?.showModal();
-    } else  {
+      if (!dialog?.open) dialog?.showModal();
+    } else if (dialog?.open) {
       dialog?.close();
     }
   }, [open]);
 
+  // Close modal on native close event (e.g., dialog.close())
+  const handleDialogClose = () => {
+    if (onClose) onClose(); // Call the parent's close function
+  };
+  
   return (
-    <dialog
-      ref={dialogRef}
-      className={cn(
-        'shadow-xl rounded-3 p-0 backdrop:bg-[#00000080] backdrop:backdrop-blur-[1.5px] w-full h-auto',
-        className,
-      )}
+    <div className={cn(open ? 'visible' : 'invisible', 'fixed flex items-center justify-center')}>
+      <dialog
+        ref={dialogRef}
+        className={cn(
+          'shadow-xl rounded-lg p-6 bg-white w-full max-w-[800px] overflow-hidden',
+          className,
+        )}
+      role="dialog"
+      aria-modal="true"
+      onClose={handleDialogClose} // Synchronize React's state with native close
     >
-    {children} 
-    </dialog>
+        {children}
+      </dialog>
+    </div>
   );
 };

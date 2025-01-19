@@ -6,4 +6,5 @@ export interface CarouselProps {
   nextButtonLabel?: string;
   finalButtonLabel?: string;
   closebutton?: string;
+  closeModal?: () => void;
 }
