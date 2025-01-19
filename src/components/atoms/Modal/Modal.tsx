@@ -1,46 +1,18 @@
-'use client';
-
 import { cn } from '@/lib/utils';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+
 import { ModalProps } from './Modal.types';
 
-export const Modal: React.FC<ModalProps> = ({ 
+export const Modal: React.FC<ModalProps> = ({
   className = '',
-  open,
+  isOpen = true,
   onClose,
   children,
 }) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-    useEffect(() => {
-    const dialog = dialogRef.current;
-
-    if (open) {
-      if (!dialog?.open) dialog?.showModal();
-    } else if (dialog?.open) {
-      dialog?.close();
-    }
-  }, [open]);
-
-  // Close modal on native close event (e.g., dialog.close())
-  const handleDialogClose = () => {
-    if (onClose) onClose(); // Call the parent's close function
-  };
+  if (!isOpen) return null;
   
-  return (
-    <div className={cn(open ? 'visible' : 'invisible', 'fixed flex items-center justify-center')}>
-      <dialog
-        ref={dialogRef}
-        className={cn(
-          'shadow-xl rounded-lg p-6 bg-white w-full max-w-[800px] overflow-hidden',
-          className,
-        )}
-      role="dialog"
-      aria-modal="true"
-      onClose={handleDialogClose} // Synchronize React's state with native close
-    >
-        {children}
-      </dialog>
-    </div>
-  );
-};
+  return (<div className={cn('fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 text-[#000', className)} onClick={onClose}>
+    <div className='bg-white'>
+      {children}
+      </div>
+</div>)}

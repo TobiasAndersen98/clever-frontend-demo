@@ -1,26 +1,26 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
+import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Modal } from '@/components/atoms/Modal/Modal';
 import { Carousel } from '@/components/molecules/Carousel/Carousel';
 import Image from 'next/image';
-import { Button } from '@/components/atoms/Button/Button';
 
 export default function Page() {
     const [showModal, setShowModal] = useState(true);
 
   return (
-    <div>
-      <Button onClick={()=>setShowModal(true)}>open</Button>
-        <Modal open={showModal} className='p-12 flex flex-col max-w-[800px] h-[673px] overflow-hidden text-[#003732] '>
-          <div>
+    <div className='relative w-full h-screen bg-cover' style={{ backgroundImage: 'url(/img/Forside_til_export.png)' }}>
+      <Modal isOpen={showModal} className=''>
+        <div className='p-12 text-[#003732]'>
+         <div>
             <p className='text-2xl font-light'>Ny og forbedret selvbetjening</p>
             <p className='mt-4'>Vi har udviklet og opdateret din selvbetjening. Vi arbejder fortsat på de små detaljer, men det vigtigste er på plads.</p>
           </div>
-          <hr className='mt-10' />
-          <Carousel
+        <hr className='mt-10' />
+        <Carousel
+          className='w-[800px]'
           closebutton="spring over"
           prevButtonLabel="Forrige"
           nextButtonLabel="Næste"
@@ -65,6 +65,7 @@ export default function Page() {
                 </div>
           </div></SwiperSlide>
           </Carousel>
+        </div>
       </Modal>
     </div>
   );

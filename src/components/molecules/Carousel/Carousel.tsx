@@ -39,7 +39,7 @@ import {CarouselProps} from './Carousel.types';
 
     const totalSlides = React.Children.count(children);
   return (
-   <div className={cn('w-full h-full', className)}>
+   <div className={cn('overflow-x-hidden', className)}>
       <div>
       <Swiper
         slidesPerView={1}
@@ -69,8 +69,9 @@ import {CarouselProps} from './Carousel.types';
           ))}
       </div>
       
-      <div className="flex justify-between items-center mt-4">
-        <Button variant="link" onClick={closeModel}>
+      <div className="flex justify-between items-center">
+   
+        <Button className={cn(activeIndex !== 2 ? '' : 'invisible' )} variant="link" onClick={closeModel}>
           {closebutton}
         </Button>
 
