@@ -25,37 +25,5 @@ const config: StorybookConfig = {
   staticDirs: [
     "../public"
   ],
-
-  webpackFinal: (config) => {
-    config.module = config.module || {};
-    config.module.rules = config.module.rules || [];
-
-    if (config.resolve) {
-      config.resolve.alias = {
-        ...config?.resolve?.alias,
-        '@/public': path.resolve(__dirname, '../public'),
-        '@': path.resolve(__dirname, '../src')
-      };
-    }
-
-    const imageRule = (config.module.rules as RuleSetRule[]).find(
-      (rule) => rule.test instanceof RegExp && rule.test.test('.svg'),
-    );
-    if (imageRule) {
-      imageRule['exclude'] = /\.svg$/;
-    }
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: {
-        loader: '@svgr/webpack',
-        options: {
-          dimensions: false
-        }
-      }
-    }); 
-    
-    return config;
-  } 
 };
 export default config;
