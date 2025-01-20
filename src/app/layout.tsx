@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Roboto } from "@next/font/google";
 import "./globals.css";
 
@@ -14,6 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <head>
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16"/>
+      </head>
       <body className={`${roboto.className} antialiased`}>
         {children}
       </body>
