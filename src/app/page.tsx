@@ -11,7 +11,8 @@ export default function Home() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const validateUser = () => {
+  const validateUser = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (email === storedEmail) {
       if (password === storedPassword) {
         console.log('User is valid');
@@ -45,32 +46,33 @@ export default function Home() {
             <p className="mt-10 text-base font-normal leading-[140%]">
               Log ind med din brugerkonto
             </p>
-            <div className="mt-6">
-              <Input
-                label="Email *"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
-              />
-            </div>
-            <div className="mt-6">
-              <Input
-                label="Adgangskode *"
-                type="password"
-                error={error}
-                value={password}
-                onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
-              />
-            </div>
-
-            <div className="mt-5">
-              <Button
-                className="bg-[#003732] px-4 py-[10px] text-[#fff] text-sm leading-[140%] tracking-[0.056px]"
-                onClick={validateUser}
-              >
-                Log ind
-              </Button>
-            </div>
+            <form onSubmit={validateUser}>
+              <div className="mt-6">
+                <Input
+                  label="Email *"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
+                />
+              </div>
+              <div className="mt-6">
+                <Input
+                  label="Adgangskode *"
+                  type="password"
+                  error={error}
+                  value={password}
+                  onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
+                />
+              </div>
+              <div className="mt-5">
+                <Button
+                  type="submit"
+                  className="bg-[#003732] px-4 py-[10px] text-[#fff] text-sm leading-[140%] tracking-[0.056px]"
+                >
+                  Log ind
+                </Button>
+              </div>
+            </form>
             <div className="mt-4">
               <Button variant="link">Glemt Adgangskode?</Button>
             </div>
