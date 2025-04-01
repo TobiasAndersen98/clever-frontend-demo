@@ -3,8 +3,7 @@ name: Demo
 on:
     pull_request:
         branches:
-            - origin/main
-            
+            - main       
 jobs:
     test:
         runs-on: ubuntu-latest
