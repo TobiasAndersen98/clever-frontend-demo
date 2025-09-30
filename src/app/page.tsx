@@ -38,6 +38,7 @@ export default function Home() {
         className="relative top-[113px] left-20"
       />
       <div className="flex w-full -mt-[22px]">
+        <div>hello</div>
         <div className="w-1/2 m-auto">
           <div className="w-[70%] ml-20">
             <h1 className="text-4xl font-350">
